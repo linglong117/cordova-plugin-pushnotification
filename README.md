@@ -1,4 +1,4 @@
-cordova-plugin-pushnotification
-===============================
+com.cmpsoft.mobile.plugin.pushnotification
+==========================================
 
-cordova-plugin-pushnotification   by mbyte
+baidu push
