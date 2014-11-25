@@ -25,7 +25,7 @@ PushNotification.prototype.init = function(api_key, success, fail) {
 	//alert(api_key);
 	customSuccess = success;
 	customFail = fail;
-	exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'PushNotification', 'init', [api_key]);
+	exec(success, fail, 'PushNotification', 'init', [api_key]);
 };
 
 PushNotification.prototype.register = function(options, successCallback, errorCallback) {
@@ -62,20 +62,23 @@ PushNotification.prototype.successFn = function(info) {
 	//alert(JSON.stringify(info));
 	if (info) {
 		customSuccess(info);
-		fastgoPushNotification.registered = true;
+		pushNotification.registered = true;
 		cordova.fireDocumentEvent("cloudPushRegistered", info);
 	}
 };
 
 PushNotification.prototype.failureFn = function(info) {
 	customFail(info);
-	fastgoPushNotification.registered = false;
+	pushNotification.registered = false;
 };
 
 PushNotification.prototype.getInfo = function(successCallback, errorCallback) {
+               //alert("getInfo");
 	argscheck.checkArgs('fF', 'PushNotification.getInfo', arguments);
 	exec(successCallback, errorCallback, "PushNotification", "getInfo", []);
 };
+               
+               
 var pushNotification = new PushNotification();
 
 module.exports = pushNotification;
