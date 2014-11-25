@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:rim="http://www.blackberry.com/ns/widgets"
 xmlns:android="http://schemas.android.com/apk/res/android"
-id="cordova-plugin-pushnotification"
+id="cordova.plugin.pushnotification"
 version="1.0.1">
 	<name>
 		PushNotification
@@ -23,7 +23,7 @@ version="1.0.1">
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="PushNotification">
-				<param name="android-package" value="cordova-plugin-pushnotification"/>
+				<param name="android-package" value="cordova.plugin.pushnotification.PushNotification"/>
 			</feature>
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/*">
@@ -135,8 +135,6 @@ version="1.0.1">
 		<source-file src="src/ios/PushPlugin.m" />
 		<header-file src="src/ios/AppDelegate+notification.h" />
 		<source-file src="src/ios/AppDelegate+notification.m" />
-
-		
 		<framework src="UIKit.framework" />
 		<framework src="CoreGraphics.framework" />
 		<framework src="MobileCoreServices.framework" />
