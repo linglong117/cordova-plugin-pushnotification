@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:rim="http://www.blackberry.com/ns/widgets"
 xmlns:android="http://schemas.android.com/apk/res/android"
-id="com.cmpsoft.mobile.plugin.pushnotification"
+id="cordova-plugin-pushnotification"
 version="1.0.1">
 	<name>
 		PushNotification
@@ -105,7 +105,7 @@ version="1.0.1">
 			<!-- <meta-data android:name="api_key" android:value="InRRp5u8SOiBtsWsUuTNbLK8" />
 			<meta-data android:name="application_android_name" android:value="android:name=\"com.baidu.frontia.FrontiaApplication\"  applicatin 添加属性 android:name= 值为 com.baidu.frontia.FrontiaApplication 项目生成后该语句需要注释" /> -->
 		</config-file>
-		<source-file src="src/android/PushNotification.java" target-dir="src/com/cmpsoft/mobile/plugin/pushnotification" />
+		<source-file src="src/android/PushNotification.java" target-dir="src/com/cordova/plugins/pushnotification" />
 		<source-file src="src/android/armeabi/libbdpush_V2_2.so" target-dir="libs/armeabi" />
 		<source-file src="src/android/mips/libbdpush_V2_2.so" target-dir="libs/mips" />
 		<!--        <source-file src="src/android/x86/libbdpush_V1_0.so" target-dir="libs/x86" />-->
