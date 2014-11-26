@@ -136,7 +136,7 @@ version="1.0.1">
 		<header-file src="src/ios/AppDelegate+notification.h" />
 		<source-file src="src/ios/AppDelegate+notification.m" />
 		
-		<header-file src="src/ios/LibBPush/BPush.h" />
+		<!-- <header-file src="src/ios/LibBPush/BPush.h" />
 		<header-file src="src/ios/LibBPush/opensource/Base64.h" />
 		<source-file src="src/ios/LibBPush/opensource/Base64.m" />
 		<header-file src="src/ios/LibBPush/opensource/Base64Defines.h" />
@@ -151,7 +151,7 @@ version="1.0.1">
 		<header-file src="src/ios/LibBPush/opensource/Reachability.h" />
 		<source-file src="src/ios/LibBPush/opensource/Reachability.m" />
 		<source-file src="src/ios/LibBPush/libBPush.a" />
-		<source-file src="src/ios/LibBPush/BPushConfig.plist" />
+		<source-file src="src/ios/LibBPush/BPushConfig.plist" /> -->
 
 		
 		<framework src="UIKit.framework" />
