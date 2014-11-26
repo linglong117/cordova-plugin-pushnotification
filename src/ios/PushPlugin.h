@@ -44,14 +44,9 @@
 @property (nonatomic, strong) NSDictionary *notificationMessage;
 @property BOOL                          isInline;
 
-- (void)pushRegister:(CDVInvokedUrlCommand*)command;
-- (void)getInfo:(CDVInvokedUrlCommand*)command;
+- (void)register:(CDVInvokedUrlCommand*)command;
 
-
-
-//- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
-- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSMutableDictionary *)idTokenDic;
-
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
 - (void)setNotificationMessage:(NSDictionary *)notification;

@@ -25,12 +25,6 @@
 
 #import "PushPlugin.h"
 
-#import "BPush.h"
-#import "JSONKit.h"
-#import "OpenUDID.h"
-
-#define SUPPORT_IOS8 1
-
 @implementation PushPlugin
 
 @synthesize notificationMessage;
@@ -49,43 +43,11 @@
     [self successWithMessage:@"unregistered"];
 }
 
-- (void)getInfo:(CDVInvokedUrlCommand *)command
-{
-//    self.callbackId = command.callbackId;
-//    
-//    [[UIApplication sharedApplication] unregisterForRemoteNotifications];
-//    [self successWithMessage:@"unregistered"];
-}
-
-- (void)pushRegister:(CDVInvokedUrlCommand*)command;
+- (void)register:(CDVInvokedUrlCommand*)command;
 {
 	self.callbackId = command.callbackId;
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
-    
-    
-    //==============================
-//    [BPush setupChannel:nil];
-//    [BPush setDelegate:self];
-//    
-//    //[application setApplicationIconBadgeNumber:0];
-//    
-//    NSLog(@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]);
-//    
-//#if SUPPORT_IOS8
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-//        UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
-//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
-//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-//    }else
-//#endif
-//    {
-//        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
-//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
-//    }
-    //===================
-    
-    
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 		UIUserNotificationType UserNotificationTypes = UIUserNotificationTypeNone;
@@ -180,17 +142,8 @@
 }
 */
 
-//- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)idTokenData {
-- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSMutableDictionary *)idTokenDic {
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
-
-//    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:idTokenDic];
-//    NSMutableDictionary *idTokenDic = [unarchiver decodeObjectForKey:@"SIDTokenInfo"];
-//    [unarchiver finishDecoding];
-
-    
-    NSData *deviceToken = [idTokenDic objectForKey:@"deviceTokenData"];
-    
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
     NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
                         stringByReplacingOccurrencesOfString:@">" withString:@""]
@@ -234,16 +187,7 @@
         [results setValue:dev.model forKey:@"deviceModel"];
         [results setValue:dev.systemVersion forKey:@"deviceSystemVersion"];
 
-		//[self successWithMessage:[NSString stringWithFormat:@"%@", token]];
-    
-    [results setValue:[idTokenDic objectForKey:@"app_id"] forKey:@"app_id"];
-    [results setValue:[idTokenDic objectForKey:@"channel_id"] forKey:@"channel_id"];
-    //[results setObject:[idTokenDic objectForKey:@"request_id"] forKey:@"request_id"];
-    [results setValue:[idTokenDic objectForKey:@"user_id"] forKey:@"user_id"];
-
-    
-    [self successWithMessage:[NSString stringWithFormat:@"%@", token] results:results];
-
+		[self successWithMessage:[NSString stringWithFormat:@"%@", token]];
     #endif
 }
 
@@ -321,17 +265,6 @@
     if (self.callbackId != nil)
     {
         CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
-        [self.commandDelegate sendPluginResult:commandResult callbackId:self.callbackId];
-    }
-}
-
--(void)successWithMessage:(NSString *)message results:(NSMutableDictionary*)results
-{
-    if (self.callbackId != nil)
-    {
-        //CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
-        CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:results];
-
         [self.commandDelegate sendPluginResult:commandResult callbackId:self.callbackId];
     }
 }

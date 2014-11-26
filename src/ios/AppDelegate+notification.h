@@ -17,10 +17,4 @@
 
 @property (nonatomic, retain) NSDictionary	*launchNotification;
 
-//@property (nonatomic, retain) NSMutableDictionary	*idDic;
-//@property (nonatomic, strong) NSString *appId;
-//@property (nonatomic, strong) NSString *channelId;
-//@property (nonatomic, strong) NSString *userId;
-
-
 @end
