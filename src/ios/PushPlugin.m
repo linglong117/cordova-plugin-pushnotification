@@ -49,7 +49,15 @@
     [self successWithMessage:@"unregistered"];
 }
 
-- (void)mregister:(CDVInvokedUrlCommand*)command;
+- (void)getInfo:(CDVInvokedUrlCommand *)command
+{
+//    self.callbackId = command.callbackId;
+//    
+//    [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+//    [self successWithMessage:@"unregistered"];
+}
+
+- (void)pushRegister:(CDVInvokedUrlCommand*)command;
 {
 	self.callbackId = command.callbackId;
 
@@ -172,8 +180,17 @@
 }
 */
 
-- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)idTokenData {
+- (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSMutableDictionary *)idTokenDic {
 
+
+//    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:idTokenDic];
+//    NSMutableDictionary *idTokenDic = [unarchiver decodeObjectForKey:@"SIDTokenInfo"];
+//    [unarchiver finishDecoding];
+
+    
+    NSData *deviceToken = [idTokenDic objectForKey:@"deviceTokenData"];
+    
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
     NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
                         stringByReplacingOccurrencesOfString:@">" withString:@""]
@@ -217,7 +234,16 @@
         [results setValue:dev.model forKey:@"deviceModel"];
         [results setValue:dev.systemVersion forKey:@"deviceSystemVersion"];
 
-		[self successWithMessage:[NSString stringWithFormat:@"%@", token]];
+		//[self successWithMessage:[NSString stringWithFormat:@"%@", token]];
+    
+    [results setValue:[idTokenDic objectForKey:@"app_id"] forKey:@"app_id"];
+    [results setValue:[idTokenDic objectForKey:@"channel_id"] forKey:@"channel_id"];
+    //[results setObject:[idTokenDic objectForKey:@"request_id"] forKey:@"request_id"];
+    [results setValue:[idTokenDic objectForKey:@"user_id"] forKey:@"user_id"];
+
+    
+    [self successWithMessage:[NSString stringWithFormat:@"%@", token] results:results];
+
     #endif
 }
 
@@ -295,6 +321,17 @@
     if (self.callbackId != nil)
     {
         CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+        [self.commandDelegate sendPluginResult:commandResult callbackId:self.callbackId];
+    }
+}
+
+-(void)successWithMessage:(NSString *)message results:(NSMutableDictionary*)results
+{
+    if (self.callbackId != nil)
+    {
+        //CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+        CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:results];
+
         [self.commandDelegate sendPluginResult:commandResult callbackId:self.callbackId];
     }
 }

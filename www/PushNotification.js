@@ -9,22 +9,22 @@ var PushNotification = function() {
 
 	var me = this;
 
-	//               	me.getInfo(function(info) {
-	//               		me.appId = info.appId;
-	//               		me.channelId = info.channelId;
-	//               		me.clientId = info.clientId;
-	//               	});
+	me.getInfo(function(info) {
+		me.appId = info.appId;
+		me.channelId = info.channelId;
+		me.clientId = info.clientId;
+	});
 
 };
 
 PushNotification.prototype.customSuccess = {};
 PushNotification.prototype.customFail = {};
 
-PushNotification.prototype.startWork = function(options, successCB, successCB) {
+PushNotification.prototype.startWork = function(options, successCB, failCB) {
 	//alert("dd");
 	customSuccess = successCB;
-	customFail = successCB;
-	exec(successCB, failCB, 'PushNotification', 'mregister', [options]);
+	customFail = failCB;
+	exec(successCB, failCB, 'PushNotification', 'pushRegister', [options]);
 };
 
 PushNotification.prototype.init = function(api_key, success, fail) {
@@ -40,7 +40,8 @@ PushNotification.prototype.register = function(options, successCallback, errorCa
 	// customFail = fail;
 	// exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'FGPushNotification', 'init', [api_key]);
 	//alert("PushNotification.prototype.register");
-	alert("opt  >>>> " + JSON.stringify(options));
+	//alert("opt  >>>> " + JSON.stringify(options));
+
 	if (errorCallback == null) {
 		errorCallback = function() {
 		}
@@ -57,6 +58,7 @@ PushNotification.prototype.register = function(options, successCallback, errorCa
 	}
 
 	cordova.exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
+
 };
 
 PushNotification.prototype.successFn = function(info) {
@@ -79,5 +81,4 @@ PushNotification.prototype.getInfo = function(successCallback, errorCallback) {
 };
 
 var pushNotification = new PushNotification();
-module.exports = pushNotification;
-
+module.exports = pushNotification; 

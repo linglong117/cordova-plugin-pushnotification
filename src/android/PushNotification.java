@@ -36,7 +36,7 @@ public class PushNotification extends CordovaPlugin
 	
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException
 	{
-		if(action.equals("init"))
+		if(action.equals("pushRegister"))
 		{
 			
 			this.pushCallbackContext = callbackContext;
