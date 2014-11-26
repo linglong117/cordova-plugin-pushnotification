@@ -22,7 +22,7 @@ PushNotification.prototype.customSuccess = {};
 PushNotification.prototype.customFail = {};
 
 PushNotification.prototype.startWork = function(api_key, success, fail) {
-	alert(api_key);
+	//alert(api_key);
 	customSuccess = success;
 	customFail = fail;
 	exec(pushNotification.successFn, pushNotification.failureFn, 'PushNotification', 'pushRegister', [api_key]);
