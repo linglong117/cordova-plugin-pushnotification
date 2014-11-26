@@ -25,6 +25,12 @@
 
 #import "PushPlugin.h"
 
+#import "BPush.h"
+#import "JSONKit.h"
+#import "OpenUDID.h"
+
+#define SUPPORT_IOS8 1
+
 @implementation PushPlugin
 
 @synthesize notificationMessage;
@@ -43,11 +49,35 @@
     [self successWithMessage:@"unregistered"];
 }
 
-- (void)register:(CDVInvokedUrlCommand*)command;
+- (void)mregister:(CDVInvokedUrlCommand*)command;
 {
 	self.callbackId = command.callbackId;
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
+    
+    
+    //==============================
+//    [BPush setupChannel:nil];
+//    [BPush setDelegate:self];
+//    
+//    //[application setApplicationIconBadgeNumber:0];
+//    
+//    NSLog(@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]);
+//    
+//#if SUPPORT_IOS8
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+//        UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//    }else
+//#endif
+//    {
+//        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+//    }
+    //===================
+    
+    
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
 		UIUserNotificationType UserNotificationTypes = UIUserNotificationTypeNone;

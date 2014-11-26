@@ -17,4 +17,10 @@
 
 @property (nonatomic, retain) NSDictionary	*launchNotification;
 
+
+@property (strong, nonatomic) NSString *appId;
+@property (strong, nonatomic) NSString *channelId;
+@property (strong, nonatomic) NSString *userId;
+
+
 @end

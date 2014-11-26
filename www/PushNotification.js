@@ -9,36 +9,38 @@ var PushNotification = function() {
 
 	var me = this;
 
-	me.getInfo(function(info) {
-		me.appId = info.appId;
-		me.channelId = info.channelId;
-		me.clientId = info.clientId;
-	});
+	//               	me.getInfo(function(info) {
+	//               		me.appId = info.appId;
+	//               		me.channelId = info.channelId;
+	//               		me.clientId = info.clientId;
+	//               	});
 
-	//alert("me >>>> " + JSON.stringify(me));
 };
 
 PushNotification.prototype.customSuccess = {};
 PushNotification.prototype.customFail = {};
 
+PushNotification.prototype.startWork = function(options, successCB, successCB) {
+	//alert("dd");
+	customSuccess = successCB;
+	customFail = successCB;
+	exec(successCB, failCB, 'PushNotification', 'mregister', [options]);
+};
+
 PushNotification.prototype.init = function(api_key, success, fail) {
 	//alert(api_key);
 	customSuccess = success;
 	customFail = fail;
-	exec(success, fail, 'PushNotification', 'init', [api_key]);
+	exec(pushNotification.successFn, pushNotification.failureFn, 'PushNotification', 'mregister', [api_key]);
 };
 
 PushNotification.prototype.register = function(options, successCallback, errorCallback) {
-
 	//alert("options" + JSON.stringify(options));
-
 	// customSuccess = success;
 	// customFail = fail;
-	// exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'PushNotification', 'init', [api_key]);
-
+	// exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'FGPushNotification', 'init', [api_key]);
 	//alert("PushNotification.prototype.register");
 	alert("opt  >>>> " + JSON.stringify(options));
-
 	if (errorCallback == null) {
 		errorCallback = function() {
 		}
@@ -55,7 +57,6 @@ PushNotification.prototype.register = function(options, successCallback, errorCa
 	}
 
 	cordova.exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
-
 };
 
 PushNotification.prototype.successFn = function(info) {
@@ -73,12 +74,10 @@ PushNotification.prototype.failureFn = function(info) {
 };
 
 PushNotification.prototype.getInfo = function(successCallback, errorCallback) {
-               //alert("getInfo");
 	argscheck.checkArgs('fF', 'PushNotification.getInfo', arguments);
 	exec(successCallback, errorCallback, "PushNotification", "getInfo", []);
 };
-               
-               
-var pushNotification = new PushNotification();
 
+var pushNotification = new PushNotification();
 module.exports = pushNotification;
+
