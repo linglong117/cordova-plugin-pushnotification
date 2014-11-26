@@ -1,4 +1,4 @@
-package com.cordova.plugin.pushnotification;
+package com.cordova.plugins.pushnotification;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;

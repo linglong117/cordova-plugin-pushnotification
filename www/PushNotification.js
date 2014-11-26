@@ -15,51 +15,19 @@ var PushNotification = function() {
 		me.clientId = info.clientId;
 	});
 
+	//alert("me >>>> " + JSON.stringify(me));
 };
 
 PushNotification.prototype.customSuccess = {};
 PushNotification.prototype.customFail = {};
 
-PushNotification.prototype.startWork = function(options, successCB, failCB) {
-	//alert("dd");
-	customSuccess = successCB;
-	customFail = failCB;
-	exec(successCB, failCB, 'PushNotification', 'pushRegister', [options]);
-};
-
-PushNotification.prototype.init = function(api_key, success, fail) {
-	//alert(api_key);
+PushNotification.prototype.startWork = function(api_key, success, fail) {
+	alert(api_key);
 	customSuccess = success;
 	customFail = fail;
-	exec(pushNotification.successFn, pushNotification.failureFn, 'PushNotification', 'mregister', [api_key]);
+	exec(pushNotification.successFn, pushNotification.failureFn, 'PushNotification', 'pushRegister', [api_key]);
 };
 
-PushNotification.prototype.register = function(options, successCallback, errorCallback) {
-	//alert("options" + JSON.stringify(options));
-	// customSuccess = success;
-	// customFail = fail;
-	// exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'FGPushNotification', 'init', [api_key]);
-	//alert("PushNotification.prototype.register");
-	//alert("opt  >>>> " + JSON.stringify(options));
-
-	if (errorCallback == null) {
-		errorCallback = function() {
-		}
-	}
-
-	if ( typeof errorCallback != "function") {
-		console.log("PushNotification.register failure: failure parameter not a function");
-		return
-	}
-
-	if ( typeof successCallback != "function") {
-		console.log("PushNotification.register failure: success callback parameter must be a function");
-		return
-	}
-
-	cordova.exec(successCallback, errorCallback, "PushPlugin", "register", [options]);
-
-};
 
 PushNotification.prototype.successFn = function(info) {
 	//alert(JSON.stringify(info));
@@ -79,6 +47,6 @@ PushNotification.prototype.getInfo = function(successCallback, errorCallback) {
 	argscheck.checkArgs('fF', 'PushNotification.getInfo', arguments);
 	exec(successCallback, errorCallback, "PushNotification", "getInfo", []);
 };
-
 var pushNotification = new PushNotification();
-module.exports = pushNotification; 
+
+module.exports = pushNotification;

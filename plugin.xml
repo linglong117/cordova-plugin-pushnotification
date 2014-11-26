@@ -14,7 +14,7 @@ version="1.0.1">
 		Apache 2.0
 	</license>
 	<keywords>
-		cmpsoft, pushnotification
+		mbyte, pushnotification
 	</keywords>
 	<js-module src="www/PushNotification.js" name="PushNotification">
 		<clobbers target="pushNotification" />
