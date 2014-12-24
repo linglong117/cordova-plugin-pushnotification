@@ -136,22 +136,23 @@ version="1.0.1">
 		<header-file src="src/ios/AppDelegate+notification.h" />
 		<source-file src="src/ios/AppDelegate+notification.m" />
 		
-		<!-- <header-file src="src/ios/LibBPush/BPush.h" />
-		<header-file src="src/ios/LibBPush/opensource/Base64.h" />
+
+		<header-file src="src/ios/LibBPush/BPush.h" />
+		<header-file src="src/ios/LibBPush/opensource/Base64.h" compiler-flags="-fno-objc-arc" />
 		<source-file src="src/ios/LibBPush/opensource/Base64.m" />
-		<header-file src="src/ios/LibBPush/opensource/Base64Defines.h" />
+		<header-file src="src/ios/LibBPush/opensource/Base64Defines.h" compiler-flags="-fno-objc-arc"/>
 		<header-file src="src/ios/LibBPush/opensource/BPushClass.h" />
 		<source-file src="src/ios/LibBPush/opensource/BPushClass.m" />
-		<header-file src="src/ios/LibBPush/opensource/GzipCompressor.h" />
+		<header-file src="src/ios/LibBPush/opensource/GzipCompressor.h" compiler-flags="-fno-objc-arc" />
 		<source-file src="src/ios/LibBPush/opensource/GzipCompressor.m" />
-		<header-file src="src/ios/LibBPush/opensource/JSONKit.h" />
+		<header-file src="src/ios/LibBPush/opensource/JSONKit.h" compiler-flags="-fno-objc-arc" />
 		<source-file src="src/ios/LibBPush/opensource/JSONKit.m" />
-		<header-file src="src/ios/LibBPush/opensource/OpenUDID.h" />
+		<header-file src="src/ios/LibBPush/opensource/OpenUDID.h" compiler-flags="-fno-objc-arc" />
 		<source-file src="src/ios/LibBPush/opensource/OpenUDID.m" />
 		<header-file src="src/ios/LibBPush/opensource/Reachability.h" />
 		<source-file src="src/ios/LibBPush/opensource/Reachability.m" />
 		<source-file src="src/ios/LibBPush/libBPush.a" />
-		<source-file src="src/ios/LibBPush/BPushConfig.plist" /> -->
+		<source-file src="src/ios/LibBPush/BPushConfig.plist" />
 
 		
 		<framework src="UIKit.framework" />
