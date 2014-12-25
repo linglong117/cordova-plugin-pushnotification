@@ -135,26 +135,50 @@ version="1.0.1">
 		<source-file src="src/ios/PushPlugin.m" />
 		<header-file src="src/ios/AppDelegate+notification.h" />
 		<source-file src="src/ios/AppDelegate+notification.m" />
+
+<!-- target-dir="facebook" -->
+<!-- 		<source-file src="src/ios/LibBPush/beep-beep.caf" target-dir="libbpush"/>
 		
+		
+		<header-file src="src/ios/LibBPush/BPush.h" target-dir="libbpush"/>
+		<header-file src="src/ios/LibBPush/opensource/Base64.h"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/opensource/Base64.m"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/Base64Defines.h" target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/BPushClass.h" target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/opensource/BPushClass.m"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/GzipCompressor.h"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/opensource/GzipCompressor.m"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/JSONKit.h" target-dir="libbpush"  compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/opensource/JSONKit.m"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/OpenUDID.h" target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/opensource/OpenUDID.m"  target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/Reachability.h" target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/opensource/Reachability.m" target-dir="libbpush" compiler-flags="-fno-objc-arc"/>
+		<source-file src="src/ios/LibBPush/libBPush.a"  target-dir="libbpush"/>
+		<source-file src="src/ios/LibBPush/BPushConfig.plist" target-dir="libbpush"/> -->
+
+				<!-- <source-file framework="true" src="src/ios/LibBPush/libBPush.a"  target-dir="LibBPush"/> -->
+
 
 		<header-file src="src/ios/LibBPush/BPush.h" />
-		<header-file src="src/ios/LibBPush/opensource/Base64.h" compiler-flags="-fno-objc-arc" />
+		<header-file src="src/ios/LibBPush/opensource/Base64.h"  />
 		<source-file src="src/ios/LibBPush/opensource/Base64.m" compiler-flags="-fno-objc-arc"/>
-		<header-file src="src/ios/LibBPush/opensource/Base64Defines.h" compiler-flags="-fno-objc-arc"/>
-		<header-file src="src/ios/LibBPush/opensource/BPushClass.h" compiler-flags="-fno-objc-arc"/>
+		<header-file src="src/ios/LibBPush/opensource/Base64Defines.h" />
+		<header-file src="src/ios/LibBPush/opensource/BPushClass.h" />
 		<source-file src="src/ios/LibBPush/opensource/BPushClass.m" compiler-flags="-fno-objc-arc"/>
-		<header-file src="src/ios/LibBPush/opensource/GzipCompressor.h" compiler-flags="-fno-objc-arc" />
+		<header-file src="src/ios/LibBPush/opensource/GzipCompressor.h"  />
 		<source-file src="src/ios/LibBPush/opensource/GzipCompressor.m" compiler-flags="-fno-objc-arc"/>
-		<header-file src="src/ios/LibBPush/opensource/JSONKit.h" compiler-flags="-fno-objc-arc" />
+		<header-file src="src/ios/LibBPush/opensource/JSONKit.h" />
 		<source-file src="src/ios/LibBPush/opensource/JSONKit.m" compiler-flags="-fno-objc-arc"/>
-		<header-file src="src/ios/LibBPush/opensource/OpenUDID.h" compiler-flags="-fno-objc-arc" />
+		<header-file src="src/ios/LibBPush/opensource/OpenUDID.h" />
 		<source-file src="src/ios/LibBPush/opensource/OpenUDID.m" compiler-flags="-fno-objc-arc"/>
 		<header-file src="src/ios/LibBPush/opensource/Reachability.h" />
-		<source-file src="src/ios/LibBPush/opensource/Reachability.m" compiler-flags="-fno-objc-arc"/>
-		<source-file src="src/ios/LibBPush/libBPush.a" />
-		<source-file src="src/ios/LibBPush/BPushConfig.plist" />
+		<source-file src="src/ios/LibBPush/opensource/Reachability.m"/>
+		<resource-file framework="true" src="src/ios/LibBPush/libBPush.a" />
+		<resource-file src="src/ios/LibBPush/BPushConfig.plist" />
 
-		
+<!-- 		<framework src="src/ios/LibBPush/libBPush.a" />
+ -->		
 		<framework src="UIKit.framework" />
 		<framework src="CoreGraphics.framework" />
 		<framework src="MobileCoreServices.framework" />
