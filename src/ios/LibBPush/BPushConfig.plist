@@ -5,10 +5,11 @@
 	<key>BPUSH_CHANNEL</key>
 	<string>91</string>
 	<key>PRODUCTION_MODE</key>
-	<false/>
+	<true/>
 	<key>DEBUG</key>
 	<true/>
 	<key>API_KEY</key>
-	<string>9imf8EHoO40i8MGFaq9e2Ur0</string>
+	<string>oR5qsNcBwEjLHQXNTQlK5wEr</string>
 </dict>
 </plist>
+

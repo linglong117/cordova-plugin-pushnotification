@@ -76,10 +76,45 @@ public class PushNotification extends CordovaPlugin
             r.put("clientId", sp.getString("user_id", ""));
             callbackContext.success(r);
             return true;
-        }
+            
+        }else if(action.equals("unregister")) {
+
+            unRegister(callbackContext);
+            return true;
+          } else {
+            //callbackContext.error("Invalid action : " + action);
+          }
+
 		return false;
 	}
 	
+	private void unRegister(CallbackContext callbackContext) {
+		// PushRegistrar registrar = getPushRegistrar();
+		// registrar.unregister(getApplicationContext(), new
+		// VoidCallback(callbackContext));
+
+		//cordova.getActivity().unregisterReceiver(this.receiver);
+		if (this.receiver != null) {
+			try {
+				this.cordova.getActivity().unregisterReceiver(this.receiver);
+				this.receiver = null;
+			} catch (Exception e) {
+				//
+			}
+		}
+		  PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
+          pluginResult.setKeepCallback(true);
+          callbackContext.sendPluginResult(pluginResult);
+          
+	}
+
+	 /*
+	  private PushRegistrar getPushRegistrar() {
+		    Registrations registrations = new Registrations();
+		    return registrations.push(REGISTRAR, getPushConfig());
+	   }
+	*/
+	 
 	private void sendPushInfo(Context context, Intent intent)
 	{
 		String content = "";

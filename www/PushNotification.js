@@ -28,6 +28,60 @@ PushNotification.prototype.startWork = function(api_key, success, fail) {
 	exec(pushNotification.successFn, pushNotification.failureFn, 'PushNotification', 'pushRegister', [api_key]);
 };
 
+	/**
+	 Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+	 @status Stable
+	 @param {Function} success - callback to be executed if the request results in success
+	 @param {Function} [error] - callback to be executed if the request results in error
+	 @returns {void}
+	 @example
+	 push.unregister(successHandler, errorHandler);
+	 */
+	PushNotification.prototype.unregister = function(successCallback, errorCallback) {
+		// alert("unregister");
+		if (errorCallback == null) {
+			errorCallback = function() {
+			}
+		}
+
+		if ( typeof successCallback != "function") {
+			console.log("Push.unregister failure: success callback parameter must be a function");
+			return;
+		}
+
+		exec(successCallback, errorCallback, "PushNotification", "unregister", []);
+	};
+
+
+	/**
+    Call this to set the application icon badge -- ios specific
+    @status Stable
+    @param {Function} success - callback to be executed if the request results in success
+    @param {String|Number} [badge] - the badge number to set on the application icon
+    @returns {void}
+    @example
+    push.setApplicationIconBadgeNumber(successHandler, errorHandler);
+*/
+PushNotification.prototype.setApplicationIconBadgeNumber = function (successCallback, badge) {
+    if (typeof successCallback != "function") {
+        console.log("Push.setApplicationIconBadgeNumber failure: success callback parameter must be a function");
+        return;
+    }
+
+    exec(successCallback, successCallback, "PushPlugin", "setApplicationIconBadgeNumber", [
+        {badge: badge}
+    ]);
+};
+
+/**
+ * Call this function to tell the OS if there was data or not so it can schedule the next fetch operation
+ * @param {int} dataType - one of the BackgroundFetchResults or 0 new data 1 no data or 2 failed
+ * @returns {void}
+ */
+PushNotification.prototype.setContentAvailable = function(dataType) {
+    //return exec(null, null, "PushPlugin", "setContentAvailable", [{type: dataType}]);
+};
+
 
 PushNotification.prototype.successFn = function(info) {
 	//alert(JSON.stringify(info));

@@ -305,16 +305,29 @@
     }
 }
 
+- (void)setContentAvailable:(CDVInvokedUrlCommand*)command {
+    NSLog(@"setContentAvailable");
+    // if ([self.completionHandlers count]) {
+    //     NSMutableDictionary *options = [command.arguments objectAtIndex:0];
+    //     NSString *type = [options objectForKey:@"type"];
+    //     void (^handler)(UIBackgroundFetchResult) = [self.completionHandlers objectAtIndex:0];
+    //     handler((UIBackgroundFetchResult) [type intValue]);
+    //     [self.completionHandlers removeObject:handler];
+    // }
+}
+
+
+
 - (void)setApplicationIconBadgeNumber:(CDVInvokedUrlCommand *)command {
 
-    self.callbackId = command.callbackId;
+    // self.callbackId = command.callbackId;
 
-    NSMutableDictionary* options = [command.arguments objectAtIndex:0];
-    int badge = [[options objectForKey:@"badge"] intValue] ?: 0;
+    // NSMutableDictionary* options = [command.arguments objectAtIndex:0];
+    // int badge = [[options objectForKey:@"badge"] intValue] ?: 0;
 
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
+    // [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
 
-    [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", badge]];
+    // [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", badge]];
 }
 -(void)successWithMessage:(NSString *)message
 {
